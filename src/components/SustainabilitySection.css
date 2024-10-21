@@ -1,0 +1,20 @@
+.sustainability-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background-color: #f4f4f4;
+  }
+  
+  .sustainability-item {
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .sustainability-item h2 {
+    color: #2e7d32;
+  }
+  
+  .sustainability-item p {
+    color: #555;
+  }
+  

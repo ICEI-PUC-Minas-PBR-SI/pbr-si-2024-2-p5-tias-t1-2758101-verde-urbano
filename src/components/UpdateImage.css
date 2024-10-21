@@ -1,0 +1,21 @@
+.update-image {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .update-image input {
+    margin-bottom: 20px;
+  }
+  
+  .update-image button {
+    background-color: #388e3c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .update-image button:disabled {
+    background-color: #ccc;
+  }
+  
