@@ -1,32 +1,50 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #2e7d32;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-links li {
-    margin: 0 15px;
-  }
-  
-  .nav-links button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .nav-links button:hover {
-    text-decoration: underline;
-  }
-  
-  .logo img {
-    width: 100px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(90deg, #2e7d32, #1b5e20); /* Degradê do verde claro para o verde mais escuro */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 120px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  list-style: none; /* Remove os pontos da lista */
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 20px;
+}
+
+.nav-links button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links button:hover {
+  background-color: #a7d129; /* Cor de fundo ao passar o mouse */
+  color: #2e7d32; /* Cor do texto ao passar o mouse */
+  transform: scale(1.1); /* Efeito de zoom */
+}
+
+.nav-links button:focus {
+  outline: none;
+}

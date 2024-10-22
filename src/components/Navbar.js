@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navbar.css';
-import logo from '../assets/logo.png'; // Importando a logo
+import logo from '../assets/logo2.png'; 
 
 function Navbar({ onNavigate }) {
   return (
