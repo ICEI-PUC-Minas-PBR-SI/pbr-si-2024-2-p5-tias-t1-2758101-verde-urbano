@@ -9,9 +9,9 @@ function Navbar({ onNavigate }) {
         <img src={logo} alt="Logo do Projeto" />
       </div>
       <ul className="nav-links">
-        <li><button onClick={() => onNavigate('home')}>Sobre Nós</button></li>
+        <li><button onClick={() => onNavigate('home')}>Página inicial</button></li>
         <li><button onClick={() => onNavigate('images')}>Listagem de Imagens</button></li>
-        <li><button onClick={() => onNavigate('update')}>Atualizar Imagens</button></li>
+        <li><button onClick={() => onNavigate('update')}>Inserir Imagens</button></li>
       </ul>
     </nav>
   );
