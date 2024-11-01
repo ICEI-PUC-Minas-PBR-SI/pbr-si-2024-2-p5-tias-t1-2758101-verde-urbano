@@ -1,0 +1,245 @@
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../assets/background2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  margin: 0;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.panel {
+  display: flex;
+  width: 800px;
+  height: 450px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideUp 1.2s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.side-panel {
+  width: 40%;
+  background: rgba(52, 199, 89, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  animation: fadeInLeft 1.5s ease-in-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.side-panel .icon-animated {
+  font-size: 50px;
+  margin-bottom: 15px;
+  animation: bounceIcon 1.5s infinite ease-in-out;
+}
+
+@keyframes bounceIcon {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.side-panel h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.side-panel p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.toggle-btn {
+  background: white;
+  color: #34c759;
+  /* Verde harmonizado */
+  border: 2px solid #34c759;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.toggle-btn:hover {
+  background: #34c759;
+  /* Fundo verde */
+  color: white;
+  /* Texto branco */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra para destacar */
+}
+
+.form-panel {
+  width: 60%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: fadeInRight 1.5s ease-in-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.form-panel .icon-animated {
+  font-size: 50px;
+  color: #34c759;
+  margin-bottom: 15px;
+  animation: bounceIcon 1.5s infinite ease-in-out;
+}
+
+.form-panel h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInForm 1.8s ease;
+}
+
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.user-icon::before {
+  content: '👤';
+}
+
+.email-icon::before {
+  content: '✉️';
+}
+
+.password-icon::before {
+  content: '🔒';
+}
+
+.icon-animated {
+  width: 60px;
+  height: 60px;
+  animation: bounceIcon 1.5s infinite ease-in-out;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #34c759;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn:hover {
+  background: #2fa348;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
