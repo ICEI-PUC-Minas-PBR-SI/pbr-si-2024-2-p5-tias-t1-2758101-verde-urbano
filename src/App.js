@@ -8,6 +8,9 @@ import Profile from './components/Profile';
 import AuthForm from './components/AuthForm'; // Importando o componente de Login/Cadastro
 import Footer from './components/Footer';
 import './App.css';
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient("https://xedmqngqukfopguebmtl.supabase.co/", "<your-anon-key>");
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
