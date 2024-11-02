@@ -25,7 +25,7 @@
 .panel {
   display: flex;
   width: 800px;
-  height: 450px;
+  height: 500px;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   overflow: hidden;
@@ -70,9 +70,16 @@
   }
 }
 
-.side-panel .icon-animated {
-  font-size: 50px;
+.icon-animated-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 15px;
+}
+
+.icon-animated {
+  width: 60px;
+  height: 60px;
   animation: bounceIcon 1.5s infinite ease-in-out;
 }
 
@@ -92,7 +99,6 @@
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: white;
 }
 
 .side-panel p {
@@ -102,25 +108,61 @@
 }
 
 .toggle-btn {
-  background: white;
-  color: #34c759;
-  /* Verde harmonizado */
-  border: 2px solid #34c759;
-  border-radius: 25px;
+  position: relative;
   padding: 10px 25px;
   font-size: 18px;
   font-weight: bold;
+  color: white;
+  /* Texto verde inicialmente */
+  background: linear-gradient(45deg, #34c759, #2fa348, #28a745, #17a2b8);
+  border: 2px solid #34c759;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  /* Oculta o efeito de gradiente animado fora do botão */
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.toggle-btn:hover {
-  background: #34c759;
-  /* Fundo verde */
-  color: white;
-  /* Texto branco */
+.toggle-btn:hover,
+.toggle-btn:focus,
+.toggle-btn:active {
+  background: linear-gradient(45deg, #34c759, #2fa348, #28a745);
+  color: #34c759;
+  /* Texto branco ao interagir */
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  /* Sombra para destacar */
+  /* Sombra para destaque */
+  transform: scale(1.05);
+  /* Leve aumento ao interagir */
+}
+
+/* Efeito de gradiente animado */
+.toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: white;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 25px;
+  /* Para combinar com o botão */
+}
+
+.toggle-btn:hover::before,
+.toggle-btn:focus::before,
+.toggle-btn:active::before {
+  opacity: 1;
+  /* Mostra o brilho ao interagir */
+}
+
+/* Efeito de Foco para Acessibilidade */
+.toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
 }
 
 .form-panel {
@@ -148,11 +190,12 @@
   }
 }
 
-.form-panel .icon-animated {
-  font-size: 50px;
-  color: #34c759;
+.user-type-container {
+  display: flex;
+  gap: 10px;
   margin-bottom: 15px;
-  animation: bounceIcon 1.5s infinite ease-in-out;
+  justify-content: center;
+  width: 100%;
 }
 
 .form-panel h2 {
@@ -205,14 +248,9 @@ form label {
   content: '🔒';
 }
 
-.icon-animated {
-  width: 60px;
-  height: 60px;
-  animation: bounceIcon 1.5s infinite ease-in-out;
-}
-
 input {
   flex: 1;
+  width: 100%;
   padding: 12px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -226,20 +264,127 @@ input:focus {
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 20px;
-  background: #34c759;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  position: relative;
+  padding: 12px 20px;
   font-size: 16px;
   font-weight: bold;
+  color: white;
+  border: 2px solid #34c759;
+  background: linear-gradient(45deg, #34c759, #2fa348, #28a745, #17a2b8);
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.submit-btn:hover {
-  background: #2fa348;
+.submit-btn:hover,
+.submit-btn:focus,
+.submit-btn:active {
+  background: linear-gradient(45deg, #34c759, #2fa348, #28a745);
+  color: #34c759;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Efeito de gradiente animado */
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: white;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+.submit-btn:hover::before,
+.submit-btn:focus::before,
+.submit-btn:active::before {
+  opacity: 1;
+}
+
+/* Efeito de Foco para Acessibilidade */
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
+}
+
+.user-type-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+  width: 100%;
+}
+
+.user-type-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.user-type-btn:hover {
+  background-color: rgba(52, 199, 89, 0.2);
+  color: #34c759;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-type-btn.active {
+  background-color: #34c759;
+  color: white;
+  border: 2px solid transparent;
+  animation: activeBorder 1s ease-in-out forwards;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gradiente animado ao redor do botão selecionado */
+@keyframes activeBorder {
+  0% {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  50% {
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  100% {
+    border-color: #34c759;
+  }
+}
+
+.user-type-btn.active:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #34c759, #2fa348, #28a745, #17a2b8);
+  z-index: -1;
+  filter: blur(8px);
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.user-type-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(52, 199, 89, 0.5);
 }

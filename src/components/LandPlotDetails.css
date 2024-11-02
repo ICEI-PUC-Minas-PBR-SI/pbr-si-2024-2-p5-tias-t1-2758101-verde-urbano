@@ -1,4 +1,64 @@
-/* Container principal */
+/* Estilos de Botões Consistentes para Voltar e Editar */
+.back-button,
+.edit-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    color: white;
+    background: linear-gradient(45deg, #34c759, #2fa348, #28a745, #17a2b8);
+    border: 2px solid #34c759;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Animação e Efeitos de Hover */
+.back-button:hover,
+.back-button:focus,
+.back-button:active,
+.edit-button:focus,
+.edit-button:active,
+.edit-button:hover {
+    background: linear-gradient(45deg, #34c759, #2fa348, #28a745);
+    color: #34c759;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Brilho Animado no Fundo ao Passar o Mouse */
+.back-button::before,
+.edit-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: white;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.back-button:hover::before,
+.edit-button:hover::before {
+    opacity: 1;
+}
+
+/* Efeito de Foco para Acessibilidade */
+.back-button:focus,
+.edit-button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}
+
+/* Estilo do Container Principal */
 .land-plot-details-container {
     padding: 50px;
     max-width: 800px;
@@ -6,7 +66,7 @@
     text-align: center;
 }
 
-/* Contêiner para os botões de voltar e editar/salvar */
+/* Contêiner para os Botões */
 .header-buttons {
     display: flex;
     justify-content: space-between;
@@ -14,44 +74,7 @@
     margin-bottom: 20px;
 }
 
-/* Botão de voltar */
-.back-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.edit-button {
-    background-color: #2196f3;
-    color: white;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.back-button:hover,
-.edit-button:hover {
-    background-color: #388e3c;
-    transform: translateY(-2px);
-}
-
-.back-button:active,
-.edit-button:active {
-    background-color: #2e7d32;
-    transform: translateY(0);
-}
-
-/* Estilo do título */
+/* Estilo do Título */
 .land-plot-title {
     font-size: 32px;
     color: #2e7d32;
@@ -63,7 +86,7 @@
     animation: fadeInDown 0.6s forwards;
 }
 
-/* Estilo do subtítulo */
+/* Estilo do Subtítulo */
 .land-plot-subtitle {
     font-size: 18px;
     color: #555;
@@ -71,10 +94,9 @@
     opacity: 0;
     transform: translateY(-20px);
     animation: fadeInDown 0.6s 0.3s forwards;
-    /* Começa após o título */
 }
 
-/* Animação para fade-in e movimento para baixo */
+/* Animação para Fade-in e Movimento para Baixo */
 @keyframes fadeInDown {
     to {
         opacity: 1;
@@ -82,7 +104,7 @@
     }
 }
 
-/* Estilos para os campos de edição do título e subtítulo */
+/* Estilos para os Campos de Edição */
 .land-plot-title input,
 .land-plot-subtitle input {
     font-size: 32px;
@@ -110,7 +132,7 @@
     box-shadow: 0px 0px 5px rgba(46, 125, 50, 0.2);
 }
 
-/* Imagem principal do terreno */
+/* Imagem Principal */
 .land-plot-image img {
     width: 100%;
     height: auto;
@@ -122,7 +144,7 @@
     animation: fadeInScale 0.6s 0.6s forwards;
 }
 
-/* Animação para imagem */
+/* Animação para Imagem */
 @keyframes fadeInScale {
     to {
         opacity: 1;
@@ -130,7 +152,7 @@
     }
 }
 
-/* Seção de detalhes em duas colunas */
+/* Seção de Detalhes em Duas Colunas */
 .land-plot-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -138,7 +160,7 @@
     margin-top: 30px;
 }
 
-/* Estilo de cada campo de detalhe */
+/* Estilo de Cada Campo de Detalhe */
 .detail-item {
     background-color: #f9f9f9;
     padding: 20px;
@@ -163,7 +185,7 @@
     animation-delay: 0.5s;
 }
 
-/* Animação para detalhes deslizarem para cima */
+/* Animação para Detalhes Subirem */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -171,7 +193,7 @@
     }
 }
 
-/* Responsividade para telas menores */
+/* Responsividade para Telas Menores */
 @media (max-width: 768px) {
     .land-plot-details {
         grid-template-columns: 1fr;
