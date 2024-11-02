@@ -2,18 +2,38 @@ import React, { useState, useEffect } from 'react';
 import './ImageList.css';
 import LandPlotDetails from './LandPlotDetails';
 import terrenoIcon from '../assets/terreno.png';
-import terrenoBaldio1 from '../assets/terrenoBaldio1.png';
-import terrenoBaldio2 from '../assets/terrenoBaldio2.png';
-import terrenoBaldio3 from '../assets/terrenoBaldio3.png';
+import { supabase } from '../supabaseClient';
 
 function ImageList() {
-  const [images] = useState([
-    { id: 1, location: 'Rua 1, Bairro A', size: '500m²', status: 'Baldio', imageUrl: terrenoBaldio1, soilCondition: 'Arenoso', availability: true },
-    { id: 2, location: 'Rua 2, Bairro B', size: '300m²', status: 'Subutilizado', imageUrl: terrenoBaldio2, soilCondition: 'Argiloso', availability: false },
-    { id: 3, location: 'Avenida 3, Bairro C', size: '700m²', status: 'Baldio', imageUrl: terrenoBaldio3, soilCondition: 'Franco-arenoso', availability: true },
-  ]);
-
+  const [images, setImages] = useState([]);
   const [selectedLandPlot, setSelectedLandPlot] = useState(null);
+
+  // Busca os dados da tabela "land" no Supabase
+  useEffect(() => {
+    const fetchLandPlots = async () => {
+      const { data, error } = await supabase
+        .from('land')
+        .select('land_picture, land_note, land_name, land_coordinate, land_description, land_note_description');
+
+      if (error) {
+        console.error('Erro ao buscar dados:', error);
+      } else {
+        // Mapeia os dados da tabela para o formato do objeto
+        const formattedData = data.map((item) => ({
+          id: item.id,
+          imageUrl: item.land_picture,
+          soilCondition: item.land_note,
+          location: item.land_name,
+          coordinate: item.land_coordinate,
+          imageDescription: item.land_description,
+          landDescription: item.land_note_description,
+        }));
+        setImages(formattedData);
+      }
+    };
+
+    fetchLandPlots();
+  }, []);
 
   useEffect(() => {
     const title = document.querySelector('.image-list-title');
@@ -21,15 +41,12 @@ function ImageList() {
     const icon = document.querySelector('.image-list-icon');
 
     if (!selectedLandPlot) {
-      // Remove as classes de animação para reiniciar
       icon.classList.remove('animate');
       title.classList.remove('animate');
       subtitle.classList.remove('animate');
 
-      // Força o reflow para reiniciar a animação
       void icon.offsetWidth;
 
-      // Adiciona as classes de animação novamente
       icon.classList.add('animate');
       title.classList.add('animate');
       subtitle.classList.add('animate');
@@ -64,8 +81,9 @@ function ImageList() {
                 <img src={image.imageUrl} alt={`Terreno em ${image.location}`} className="card-image" />
                 <div className="card-content">
                   <h3>{image.location}</h3>
-                  <p><strong>Tamanho:</strong> {image.size}</p>
-                  <p><strong>Status:</strong> {image.status}</p>
+                  <p><strong>Condição:</strong> {image.soilCondition}</p>
+                  <p><strong>Bairro:</strong> {image.location}</p>
+                  <p><strong>Coordenada:</strong> {image.coordinate}</p>
                 </div>
               </div>
             ))}

@@ -8,9 +8,6 @@ import Profile from './components/Profile';
 import AuthForm from './components/AuthForm'; // Importando o componente de Login/Cadastro
 import Footer from './components/Footer';
 import './App.css';
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient("https://xedmqngqukfopguebmtl.supabase.co/", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhlZG1xbmdxdWtmb3BndWVibXRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc3NDU0MTEsImV4cCI6MjA0MzMyMTQxMX0.PMUYLGgKqN7MiLQusJexnlydJ4Ywtobb_b2Q8lEKyjk");
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
