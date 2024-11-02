@@ -18,9 +18,22 @@ function ImageList() {
       if (error) {
         console.error('Erro ao buscar dados:', error);
       } else {
-        // Mapeia os dados da tabela para o formato do objeto
-        const formattedData = data.map((item) => ({
-          id: item.id,
+        let dataSorted = data.sort((a, b) => b.land_note - a.land_note);
+
+        dataSorted.map((item) => {
+          let landNote = item.land_note;
+          if (landNote <= 2) {
+            item.land_note = "Terreno Urbanizado";
+          }
+          else if (landNote == 3) {
+            item.land_note = "Terreno Suburbanizado";
+          }
+          else if (landNote >= 4) {
+            item.land_note = "Terreno Baldio";
+          }
+        });
+
+        const formattedData = dataSorted.map((item) => ({
           imageUrl: item.land_picture,
           soilCondition: item.land_note,
           location: item.land_name,
@@ -82,8 +95,8 @@ function ImageList() {
                 <div className="card-content">
                   <h3>{image.location}</h3>
                   <p><strong>Condição:</strong> {image.soilCondition}</p>
-                  <p><strong>Bairro:</strong> {image.location}</p>
                   <p><strong>Coordenada:</strong> {image.coordinate}</p>
+                  <p><strong>Descrição do Terreno:</strong> {image.landDescription}</p>
                 </div>
               </div>
             ))}
