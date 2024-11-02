@@ -3,9 +3,9 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import SustainabilitySection from './components/SustainabilitySection';
 import ImageList from './components/ImageList';
-import UpdateImage from './components/UpdateImage';
+import AddProposal from './components/AddProposal'; // Alteração para importar o novo componente
 import Profile from './components/Profile';
-import AuthForm from './components/AuthForm'; // Importando o componente de Login/Cadastro
+import AuthForm from './components/AuthForm'; // Componente de Login/Cadastro
 import Footer from './components/Footer';
 import './App.css';
 
@@ -40,7 +40,7 @@ function App() {
 
   // Função para registro (simulada)
   const handleRegister = (username, email, password) => {
-    // Aqui você pode adicionar a lógica de registro
+    // Lógica de registro simulada
     alert(`Usuário ${username} cadastrado com sucesso!`);
     setIsAuthenticated(true);
     setCurrentPage('profile'); // Redireciona para o perfil após registro
@@ -57,7 +57,7 @@ function App() {
         </>
       )}
       {currentPage === 'images' && <ImageList />}
-      {currentPage === 'update' && <UpdateImage />}
+      {currentPage === 'addProposal' && <AddProposal />} {/* Página para adicionar proposta */}
       {currentPage === 'profile' && isAuthenticated && <Profile user={user} />}
       {currentPage === 'auth' && (
         <AuthForm onLogin={handleLogin} onRegister={handleRegister} />

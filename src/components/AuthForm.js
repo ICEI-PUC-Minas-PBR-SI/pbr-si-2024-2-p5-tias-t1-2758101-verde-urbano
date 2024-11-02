@@ -4,12 +4,14 @@ import './AuthForm.css';
 
 function AuthForm({ onLogin, onRegister }) {
   const [isLogin, setIsLogin] = useState(true);
+  const [userType, setUserType] = useState(''); // Estado para o tipo de usuário
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
   const handleToggleForm = () => {
     setIsLogin(!isLogin);
+    setUserType('');
     setEmail('');
     setPassword('');
     setUsername('');
@@ -20,7 +22,7 @@ function AuthForm({ onLogin, onRegister }) {
     if (isLogin) {
       onLogin(email, password);
     } else {
-      onRegister(username, email, password);
+      onRegister(username, email, password, userType);
     }
   };
 
@@ -43,6 +45,36 @@ function AuthForm({ onLogin, onRegister }) {
           <form onSubmit={handleSubmit}>
             {!isLogin && (
               <>
+                <div className="user-type-container">
+                  <button
+                    type="button"
+                    className={`user-type-btn ${userType === 'Proprietário' ? 'active' : ''}`}
+                    onClick={() => setUserType('Proprietário')}
+                  >
+                    Proprietário
+                  </button>
+                  <button
+                    type="button"
+                    className={`user-type-btn ${userType === 'Empresa' ? 'active' : ''}`}
+                    onClick={() => setUserType('Empresa')}
+                  >
+                    Empresa
+                  </button>
+                  <button
+                    type="button"
+                    className={`user-type-btn ${userType === 'Prefeitura' ? 'active' : ''}`}
+                    onClick={() => setUserType('Prefeitura')}
+                  >
+                    Prefeitura
+                  </button>
+                  <button
+                    type="button"
+                    className={`user-type-btn ${userType === 'Voluntário' ? 'active' : ''}`}
+                    onClick={() => setUserType('Voluntário')}
+                  >
+                    Voluntário
+                  </button>
+                </div>
                 <label>
                   <i className="icon user-icon"></i>
                   <input
