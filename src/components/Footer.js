@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer() {
+function Footer({ onNavigate }) {
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -21,8 +21,16 @@ function Footer() {
         <div className="footer-section links">
           <h4>Links Importantes</h4>
           <ul>
-            <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>
-            <li><a href="/termos-de-servico">Termos de Serviço</a></li>
+            <li>
+              <button onClick={() => onNavigate('privacy-policy')} className="footer-link">
+                Política de Privacidade
+              </button>
+            </li>
+            <li>
+              <button onClick={() => onNavigate('terms-of-service')} className="footer-link">
+                Termos de Serviço
+              </button>
+            </li>
           </ul>
         </div>
       </div>

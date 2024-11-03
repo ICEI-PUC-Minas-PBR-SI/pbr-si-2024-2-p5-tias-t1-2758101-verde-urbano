@@ -6,10 +6,12 @@ import TechInnovationSection from './components/TechInnovationSection';
 import BenefitsSection from './components/BenefitsSection';
 import CommunityImpactSection from './components/CommunityImpactSection';
 import ImageList from './components/ImageList';
-import AddProposal from './components/AddProposal'; // Componente de Adicionar Proposta
+import AddProposal from './components/AddProposal';
 import Profile from './components/Profile';
-import AuthForm from './components/AuthForm'; // Componente de Login/Cadastro
+import AuthForm from './components/AuthForm';
 import Footer from './components/Footer';
+import PrivacyPolicyPage from './components/PrivacyPolicyPage';
+import TermsOfServicePage from './components/TermsOfServicePage';
 import './App.css';
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
   const [user, setUser] = useState({
     name: 'Joao Silva',
     email: 'joao.silva@email.com',
-    image: '', // Deixe vazio para testar as iniciais
+    image: '',
   });
 
   const handlePageChange = (page) => {
@@ -52,20 +54,21 @@ function App() {
         <>
           <HeroSection />
           <SustainabilitySection />
-          <TechInnovationSection /> {/* Seção de Inovação Tecnológica */}
-          <BenefitsSection />         {/* Seção de Benefícios para o Usuário */}
-          <CommunityImpactSection />  {/* Seção de Impacto Comunitário */}
+          <TechInnovationSection />
+          <BenefitsSection />
+          <CommunityImpactSection />
         </>
       )}
-
       {currentPage === 'images' && <ImageList />}
       {currentPage === 'addProposal' && <AddProposal />}
       {currentPage === 'profile' && isAuthenticated && <Profile user={user} />}
       {currentPage === 'auth' && (
         <AuthForm onLogin={handleLogin} onRegister={handleRegister} />
       )}
+      {currentPage === 'privacy-policy' && <PrivacyPolicyPage />}
+      {currentPage === 'terms-of-service' && <TermsOfServicePage onNavigate={handlePageChange} />}
 
-      <Footer />
+      <Footer onNavigate={handlePageChange} />
     </div>
   );
 }
