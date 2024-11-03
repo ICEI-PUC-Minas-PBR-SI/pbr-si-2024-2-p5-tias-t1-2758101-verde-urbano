@@ -62,7 +62,7 @@
 
 ## 📝 Quadro de Tarefas
 
-Você pode acompanhar o andamento do projeto e as tarefas no [quadro Kanban](#) (link a ser inserido).
+Você pode acompanhar o andamento do projeto e as tarefas no [Quadro Kanban](https://github.com/orgs/ICEI-PUC-Minas-PBR-SI/projects/72).
 
 ---
 
