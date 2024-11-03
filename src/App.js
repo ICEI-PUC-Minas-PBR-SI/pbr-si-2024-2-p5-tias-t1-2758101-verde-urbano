@@ -12,16 +12,18 @@ import AuthForm from './components/AuthForm';
 import Footer from './components/Footer';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
+import NotificationPopup from './components/NotificationPopup'; // Importando o novo componente
 import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({
-    name: 'Joao Silva',
-    email: 'joao.silva@email.com',
+    name: 'Teste',
+    email: 'teste@email.com',
     image: '',
   });
+  const [notification, setNotification] = useState(null); // Estado para notificação
 
   const handlePageChange = (page) => {
     if (page === 'profile' && !isAuthenticated) {
@@ -32,18 +34,24 @@ function App() {
   };
 
   const handleLogin = (email, password) => {
-    if (email === 'joao.silva@email.com' && password === '123456') {
+    if (email === 'teste@email.com' && password === '1234') {
       setIsAuthenticated(true);
       setCurrentPage('profile');
+      setNotification({ message: 'Login realizado com sucesso!', type: 'success' });
     } else {
-      alert('Email ou senha incorretos');
+      setNotification({ message: 'Email ou senha incorretos', type: 'error' });
     }
   };
 
   const handleRegister = (username, email, password) => {
-    alert(`Usuário ${username} cadastrado com sucesso!`);
+    setUser({ name: username, email });
     setIsAuthenticated(true);
     setCurrentPage('profile');
+    setNotification({ message: `Usuário ${username} cadastrado com sucesso!`, type: 'success' });
+  };
+
+  const closeNotification = () => {
+    setNotification(null);
   };
 
   return (
@@ -69,6 +77,14 @@ function App() {
       {currentPage === 'terms-of-service' && <TermsOfServicePage onNavigate={handlePageChange} />}
 
       <Footer onNavigate={handlePageChange} />
+
+      {notification && (
+        <NotificationPopup
+          message={notification.message}
+          type={notification.type}
+          onClose={closeNotification}
+        />
+      )}
     </div>
   );
 }

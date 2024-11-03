@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import loginIcon from '../assets/login.png'; // Caminho para o ícone de login
+import loginIcon from '../assets/login.png';
 import './AuthForm.css';
 
 function AuthForm({ onLogin, onRegister }) {
   const [isLogin, setIsLogin] = useState(true);
-  const [userType, setUserType] = useState(''); // Estado para o tipo de usuário
+  const [userType, setUserType] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -33,7 +33,7 @@ function AuthForm({ onLogin, onRegister }) {
           <div className="icon-animated-container">
             <img src={loginIcon} alt="Login Icon" className="icon-animated" />
           </div>
-          <h2>{isLogin ? "Bem - vindo" : "Cria sua conta"}</h2>
+          <h2>{isLogin ? "Bem - vindo" : "Crie sua conta"}</h2>
           <p>{isLogin ? "Acesse sua conta agora" : "Junte-se à nossa plataforma"}</p>
           <button className="toggle-btn" onClick={handleToggleForm}>
             {isLogin ? "Criar conta" : "Entrar"}
@@ -41,7 +41,7 @@ function AuthForm({ onLogin, onRegister }) {
         </div>
 
         <div className="form-panel">
-          <h2>{isLogin ? "ENTRAR" : "CRIA SUA CONTA"}</h2>
+          <h2>{isLogin ? "ENTRAR" : "CRIE SUA CONTA"}</h2>
           <form onSubmit={handleSubmit}>
             {!isLogin && (
               <>

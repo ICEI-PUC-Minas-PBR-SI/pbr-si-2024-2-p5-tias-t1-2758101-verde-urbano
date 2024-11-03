@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './AddProposal.css';
-import terrenoIcon from '../assets/proposta.png'; // Ícone da página
+import terrenoIcon from '../assets/proposta.png';
 
 function AddProposal() {
     const [selectedFile, setSelectedFile] = useState(null);
-    const [previewImage, setPreviewImage] = useState(null); // Preview da imagem
-    const [showModal, setShowModal] = useState(false); // Estado para controlar o popup
+    const [previewImage, setPreviewImage] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [proposalDescription, setProposalDescription] = useState('');
     const [areaSize, setAreaSize] = useState('');
     const [additionalInfo, setAdditionalInfo] = useState('');
@@ -22,7 +22,7 @@ function AddProposal() {
     const handleUpload = (event) => {
         event.preventDefault();
         if (selectedFile) {
-            setShowModal(true); // Exibe o modal após o envio
+            setShowModal(true);
         } else {
             alert('Por favor, escolha um arquivo antes de enviar.');
         }
@@ -54,7 +54,6 @@ function AddProposal() {
             </div>
 
             <div className="main-container">
-                {/* Coluna da imagem */}
                 <div className="image-preview-container">
                     {previewImage && <h3>Pré-visualização da Imagem</h3>}
                     {previewImage ? (
@@ -71,7 +70,6 @@ function AddProposal() {
                     </div>
                 </div>
 
-                {/* Coluna dos campos de entrada */}
                 <div className="form-container">
                     <form onSubmit={handleUpload} className="proposal-form">
                         <textarea
@@ -106,9 +104,14 @@ function AddProposal() {
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <h2>Proposta Enviada</h2>
+                        <h2>Proposta Enviada com Sucesso!</h2>
                         {previewImage && <img src={previewImage} alt="Imagem Enviada" className="modal-image-preview" />}
-                        <p>A imagem <strong>{selectedFile.name}</strong> foi enviada com sucesso!</p>
+                        <div className="modal-info">
+                            <h3>Detalhes da Proposta</h3>
+                            <p><strong>Descrição:</strong> {proposalDescription}</p>
+                            <p><strong>Área do Terreno:</strong> {areaSize}</p>
+                            {additionalInfo && <p><strong>Informações Adicionais:</strong> {additionalInfo}</p>}
+                        </div>
                         <button className="close-button" onClick={closeModal}>Fechar</button>
                     </div>
                 </div>
