@@ -2,10 +2,7 @@ const { createClient } = require("@supabase/supabase-js");
 const { extractCoordinatesFromName } = require("../utils/extractCoordinate");
 require("dotenv").config();
 
-let SUPABASE_URL = "https://xedmqngqukfopguebmtl.supabase.co";
 
-let SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhlZG1xbmdxdWtmb3BndWVibXRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc3NDU0MTEsImV4cCI6MjA0MzMyMTQxMX0.PMUYLGgKqN7MiLQusJexnlydJ4Ywtobb_b2Q8lEKyjk";
 
 // Configuração do Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -96,4 +93,3 @@ exports.upsertLandData = async (imagensDescritas, bairro) => {
   }
 };
 
-// Chamar esta função após ter obtido o array de imagens e descrições
