@@ -2,8 +2,6 @@ const { createClient } = require("@supabase/supabase-js");
 const { extractCoordinatesFromName } = require("../utils/extractCoordinate");
 require("dotenv").config();
 
-
-
 // Configuração do Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 

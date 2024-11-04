@@ -13,6 +13,8 @@ import Footer from './components/Footer';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import TermsOfServicePage from './components/TermsOfServicePage';
 import NotificationPopup from './components/NotificationPopup'; // Importando o novo componente
+import { supabase } from './supabaseClient';
+import CryptoJS from 'crypto-js';
 import './App.css';
 
 function App() {
@@ -33,21 +35,80 @@ function App() {
     }
   };
 
-  const handleLogin = (email, password) => {
-    if (email === 'teste@email.com' && password === '1234') {
-      setIsAuthenticated(true);
-      setCurrentPage('profile');
-      setNotification({ message: 'Login realizado com sucesso!', type: 'success' });
-    } else {
-      setNotification({ message: 'Email ou senha incorretos', type: 'error' });
-    }
-  };
+  const handleLogin = async (email, password) => {
+    const hashedPassword = generateHash(password);
+    let { count } = await supabase
+      .from('user')
+      .select('*', { count: 'exact', head: true })
+      .eq('email', email)
+      .eq('password', hashedPassword);
 
-  const handleRegister = (username, email, password) => {
-    setUser({ name: username, email });
+    if (count == 0) {
+      setNotification({ message: 'Email e/ou senha incorretos.', type: 'error' });
+      return;
+    }
+
     setIsAuthenticated(true);
     setCurrentPage('profile');
-    setNotification({ message: `Usuário ${username} cadastrado com sucesso!`, type: 'success' });
+  };
+
+  const generateHash = (inputText) => {
+    const sha1Hash = CryptoJS.SHA1(inputText).toString();
+    return sha1Hash;
+  };
+
+  const validaExistenciaEmail = async (email) => {
+    try {
+      let { count } = await supabase
+        .from('user')
+        .select('*', { count: 'exact', head: true })
+        .eq('email', email);
+
+      if (count > 0) {
+        return true;
+      }
+      return false;
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  const handleRegister = async (username, email, password, userType) => {
+    try {
+      const emailExists = await validaExistenciaEmail(email);
+      if (emailExists) {
+        console.error('Email já cadastrado.');
+        setNotification({ message: `Email já cadastrado.`, type: 'error' });
+        return;
+      }
+
+      const hashedPassword = generateHash(password);
+      const { data, error } = await supabase
+        .from('user')
+        .insert([{
+          name: username,
+          email: email,
+          password: hashedPassword,
+          user_type_id: userType
+        }]);
+
+      if (error) {
+        console.error('Erro ao cadastrar o usuário:', error.message);
+        setNotification({ message: `Erro ao cadastrar o usuário: ${error.message}`, type: 'error' });
+        return;
+      }
+
+      setUser({ name: username, email });
+      setIsAuthenticated(true);
+      //TODO: Redireciona o cara pra tela de login
+      //TODO: Tem que ter como acessar a tela de perfil do usuário por dentro do sistema
+      setCurrentPage('profile');
+      setNotification({ message: `Usuário ${username} cadastrado com sucesso!`, type: 'success' });
+    } catch (error) {
+      console.error('Erro inesperado ao cadastrar o usuário:', error);
+      setNotification({ message: `Erro inesperado ao cadastrar o usuário: ${error.message}`, type: 'error' });
+    }
   };
 
   const closeNotification = () => {

@@ -11,7 +11,7 @@ function AuthForm({ onLogin, onRegister }) {
 
   const handleToggleForm = () => {
     setIsLogin(!isLogin);
-    setUserType('');
+    setUserType(1);
     setEmail('');
     setPassword('');
     setUsername('');
@@ -48,29 +48,29 @@ function AuthForm({ onLogin, onRegister }) {
                 <div className="user-type-container">
                   <button
                     type="button"
-                    className={`user-type-btn ${userType === 'Proprietário' ? 'active' : ''}`}
-                    onClick={() => setUserType('Proprietário')}
+                    className={`user-type-btn ${userType === 1 ? 'active' : ''}`}
+                    onClick={() => setUserType(1)}
                   >
                     Proprietário
                   </button>
                   <button
                     type="button"
-                    className={`user-type-btn ${userType === 'Empresa' ? 'active' : ''}`}
-                    onClick={() => setUserType('Empresa')}
+                    className={`user-type-btn ${userType === 2 ? 'active' : ''}`}
+                    onClick={() => setUserType(2)}
                   >
                     Empresa
                   </button>
                   <button
                     type="button"
-                    className={`user-type-btn ${userType === 'Prefeitura' ? 'active' : ''}`}
-                    onClick={() => setUserType('Prefeitura')}
+                    className={`user-type-btn ${userType === 3 ? 'active' : ''}`}
+                    onClick={() => setUserType(3)}
                   >
                     Prefeitura
                   </button>
                   <button
                     type="button"
-                    className={`user-type-btn ${userType === 'Voluntário' ? 'active' : ''}`}
-                    onClick={() => setUserType('Voluntário')}
+                    className={`user-type-btn ${userType === 4 ? 'active' : ''}`}
+                    onClick={() => setUserType(4)}
                   >
                     Voluntário
                   </button>
