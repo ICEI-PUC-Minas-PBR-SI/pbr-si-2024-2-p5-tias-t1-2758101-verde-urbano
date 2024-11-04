@@ -8,7 +8,6 @@ function ImageList() {
   const [images, setImages] = useState([]);
   const [selectedLandPlot, setSelectedLandPlot] = useState(null);
 
-  // Busca os dados da tabela "land" no Supabase
   useEffect(() => {
     const fetchLandPlots = async () => {
       const { data, error } = await supabase
