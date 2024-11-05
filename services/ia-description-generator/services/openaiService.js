@@ -73,8 +73,25 @@ exports.gerarDescricaoImagem = async ({
       ],
     });
 
-    const conditions =
-      response?.choices[0]?.message?.tool_calls[0]?.function?.arguments;
+    let conditions;
+    if (
+      response &&
+      response.choices &&
+      response.choices[0] &&
+      response.choices[0].message &&
+      response.choices[0].message.tool_calls &&
+      response.choices[0].message.tool_calls[0] &&
+      response.choices[0].message.tool_calls[0].function &&
+      response.choices[0].message.tool_calls[0].function.arguments
+    ) {
+      conditions = response.choices[0].message.tool_calls[0].function.arguments;
+    } else {
+      conditions = JSON.stringify({
+        condition_level: 0,
+        explanation_note: "Não foi possível determinar a condição do terreno",
+        description: "Não foi possível determinar a descrição do terreno",
+      });
+    }
 
     return conditions;
   } catch (error) {
