@@ -12,6 +12,11 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
         landDescription: landPlot.landDescription
     });
 
+    // Função para capitalizar a primeira letra
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
     useEffect(() => {
         const title = document.querySelector('.land-plot-title');
         const subtitle = document.querySelector('.land-plot-subtitle');
@@ -72,7 +77,7 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
                         placeholder="Nome do Terreno"
                     />
                 ) : (
-                    `${editableFields.location}`
+                    capitalizeFirstLetter(editableFields.location)
                 )}
             </h1>
             <p className="land-plot-subtitle">

@@ -8,6 +8,11 @@ function ImageList() {
   const [images, setImages] = useState([]);
   const [selectedLandPlot, setSelectedLandPlot] = useState(null);
 
+  // Função para capitalizar a primeira letra
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   useEffect(() => {
     const fetchLandPlots = async () => {
       const { data, error } = await supabase
@@ -35,7 +40,7 @@ function ImageList() {
         const formattedData = dataSorted.map((item) => ({
           imageUrl: item.land_picture,
           soilCondition: item.land_note,
-          location: item.land_name,
+          location: capitalizeFirstLetter(item.land_name), // Capitalizando a primeira letra
           coordinate: item.land_coordinate,
           imageDescription: item.land_description,
           landDescription: item.land_note_description,
@@ -88,8 +93,8 @@ function ImageList() {
           </div>
 
           <div className="image-list">
-            {images.map((image) => (
-              <div key={image.id} className="card animate-card" onClick={() => openLandPlotDetails(image)}>
+            {images.map((image, index) => (
+              <div key={index} className="card animate-card" onClick={() => openLandPlotDetails(image)}>
                 <img src={image.imageUrl} alt={`Terreno em ${image.location}`} className="card-image" />
                 <div className="card-content">
                   <h3>{image.location}</h3>
