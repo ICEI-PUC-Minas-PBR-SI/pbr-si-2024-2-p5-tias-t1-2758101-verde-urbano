@@ -3,6 +3,8 @@ import './LandPlotDetails.css';
 
 function LandPlotDetails({ landPlot, onBack, onSave }) {
     const [isEditing, setIsEditing] = useState(false);
+    const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
     const [editableFields, setEditableFields] = useState({
         location: landPlot.location,
         imageDescription: landPlot.imageDescription,
@@ -38,6 +40,16 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
         }
         setIsEditing(!isEditing);
     };
+
+    const salvaComments = ()=>{
+        //salvar comentario no banco
+        setComments([...getComments(),comment])
+        setComment('')
+    }
+    const getComments = ()=>{
+        //Buscar os comentarios no banco
+        return comments
+    }
 
     // Manipulador para mudanças nos campos de entrada
     const handleChange = (e) => {
@@ -158,7 +170,30 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
             ) : (
                 <p style={{ color: '#555', marginTop: '20px' }}>Localização no mapa não disponível</p>
             )}
+            <br />
+            <br />
+                <h1 className="land-plot-title">
+                    Comentários
+                </h1>
+            <div className="detail-item">
+                {getComments().map((c)=><p>{c}</p>)}               
+            </div>
+            <br />
+            <div >
+            <textarea
+                            placeholder="Deixe seu comentário"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                            required
+                            className="textarea-input"
+                        />
+            </div>
+            <br />
+            <div className="header-buttons">
+                <button onClick={salvaComments} className="back-button">Comentar</button>
+            </div>
         </div>
+
     );
 }
 
