@@ -65,7 +65,19 @@
     margin: 0 auto;
     text-align: center;
 }
-
+.comentario{
+    padding-left: 20px;
+    text-align: left;
+}
+.tabela tr{
+height: 50px !important;
+}
+.tabela td{
+    border-bottom: 1px solid #ccc;
+    }
+.tabela{
+    width: 100%;
+}
 /* Contêiner para os Botões */
 .header-buttons {
     display: flex;
@@ -170,6 +182,11 @@
     transform: translateY(10px);
     animation: fadeInUp 0.5s forwards;
 }
+.trash{
+    height: 20px;
+    cursor: pointer;
+}
+
 
 .detail-item h3 {
     font-size: 18px;

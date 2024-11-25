@@ -37,12 +37,13 @@ function App() {
 
   const handleLogin = async (email, password) => {
     const hashedPassword = generateHash(password);
-    let { count } = await supabase
+    let data = await supabase
       .from('user')
       .select('*', { count: 'exact', head: true })
       .eq('email', email)
-      .eq('password', hashedPassword);
-
+      .eq('password', hashedPassword); 
+      console.log(sessionStorage.user_id)
+      let count=data.count
     if (count == 0) {
       setNotification({ message: 'Email e/ou senha incorretos.', type: 'error' });
       return;

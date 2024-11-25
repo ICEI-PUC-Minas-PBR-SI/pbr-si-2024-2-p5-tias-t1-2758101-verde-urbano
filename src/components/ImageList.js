@@ -17,7 +17,7 @@ function ImageList() {
     const fetchLandPlots = async () => {
       const { data, error } = await supabase
         .from('land')
-        .select('land_picture, land_note, land_name, land_coordinate, land_description, land_note_description');
+        .select('id, land_picture, land_note, land_name, land_coordinate, land_description, land_note_description');
 
       if (error) {
         console.error('Erro ao buscar dados:', error);
@@ -38,6 +38,7 @@ function ImageList() {
         });
 
         const formattedData = dataSorted.map((item) => ({
+          landId: item.id, // Inclui o ID
           imageUrl: item.land_picture,
           soilCondition: item.land_note,
           location: capitalizeFirstLetter(item.land_name), // Capitalizando a primeira letra
