@@ -34,24 +34,44 @@ function App() {
       setCurrentPage(page);
     }
   };
-
+  
   const handleLogin = async (email, password) => {
     const hashedPassword = generateHash(password);
-    let data = await supabase
+    
+    // Busca o usuário no banco
+    const { data, error } = await supabase
       .from('user')
-      .select('*', { count: 'exact', head: true })
+      .select('*') // Seleciona todos os campos
       .eq('email', email)
-      .eq('password', hashedPassword); 
-      console.log(sessionStorage.user_id)
-      let count=data.count
-    if (count == 0) {
+      .eq('password', hashedPassword);
+    
+    if (error) {
+      console.error('Erro ao buscar o usuário:', error);
+      setNotification({ message: 'Erro ao fazer login.', type: 'error' });
+      return;
+    }
+    
+    // Verifica se o usuário existe
+    if (!data || data.length === 0) {
       setNotification({ message: 'Email e/ou senha incorretos.', type: 'error' });
       return;
     }
-
+  
+    // Extrai os dados do usuário (primeiro elemento do array)
+    const loggedUser = data[0];
+    // Armazena o ID do usuário no sessionStorage
+    sessionStorage.setItem('user_id', loggedUser.id);
+    // Define o estado com as informações do usuário
+    setUser({
+      name: loggedUser.name || 'Usuário', // Usa o nome do banco ou um padrão
+      email: loggedUser.email,
+      image: loggedUser.image || '' // Se houver imagem armazenada
+    });
+  
     setIsAuthenticated(true);
     setCurrentPage('profile');
   };
+  
 
   const generateHash = (inputText) => {
     const sha1Hash = CryptoJS.SHA1(inputText).toString();
@@ -99,17 +119,19 @@ function App() {
         setNotification({ message: `Erro ao cadastrar o usuário: ${error.message}`, type: 'error' });
         return;
       }
-
+      // Armazena o ID do usuário no sessionStorage
+      sessionStorage.setItem('user_id', user.id);
       setUser({ name: username, email });
       setIsAuthenticated(true);
       //TODO: Redireciona o cara pra tela de login
       //TODO: Tem que ter como acessar a tela de perfil do usuário por dentro do sistema
       setCurrentPage('profile');
       setNotification({ message: `Usuário ${username} cadastrado com sucesso!`, type: 'success' });
-    } catch (error) {
-      console.error('Erro inesperado ao cadastrar o usuário:', error);
-      setNotification({ message: `Erro inesperado ao cadastrar o usuário: ${error.message}`, type: 'error' });
-    }
+    } 
+      catch (error) {
+        console.error('Erro inesperado ao cadastrar o usuário:', error);
+        setNotification({ message: `Erro inesperado ao cadastrar o usuário: ${error.message}`, type: 'error' });
+        }
   };
 
   const closeNotification = () => {
