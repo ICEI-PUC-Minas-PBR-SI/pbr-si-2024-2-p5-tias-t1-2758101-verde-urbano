@@ -241,9 +241,9 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
                             <td className='comentario'>
                                 {c.comment}
                             </td>
-                            <td onClick={() => deletaComments(c.id)}>
+                            <td >
 
-                                {sessionStorage.user_id == c.user.id ? <img src={trashIcon} alt="X" className="trash" /> : ''}
+                                {sessionStorage.user_id == c.user.id ? <img onClick={() => deletaComments(c.id)} src={trashIcon} alt="X" className="trash" /> : ''}
                             </td>
                         </tr>
 
