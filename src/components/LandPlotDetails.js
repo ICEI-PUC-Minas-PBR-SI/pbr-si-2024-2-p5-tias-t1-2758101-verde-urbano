@@ -79,7 +79,7 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
         const { data: users, error: userError } = await supabase
             .from('user')
             .select('id, name')
-        console.log(users, userError)
+        
         if (userError) {
             console.error('Erro ao buscar dados:', error);
         } else {
@@ -89,13 +89,12 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
             console.error('Erro ao buscar dados:', error);
         } else {
             let c = data.map((comment) => { return { user: users.find((user) => { return user.id == comment.user_id }), comment: comment.comments, id: comment.id } })
-            console.log(c)
+            
             setComments(c);
         }
     }
     const deletaComments = async (id) => {
         if (window.confirm('Deseja apagar o comentário?')) {
-            console.log(id)
             await supabase
                 .from('comments')
                 .delete()

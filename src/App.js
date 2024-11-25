@@ -63,7 +63,7 @@ function App() {
     sessionStorage.setItem('user_id', loggedUser.id);
     // Define o estado com as informações do usuário
     setUser({
-      name: loggedUser.name || 'Usuário', // Usa o nome do banco ou um padrão
+      name: loggedUser.name || 'user', // Usa o nome do banco ou um padrão
       email: loggedUser.email,
       image: loggedUser.image || '' // Se houver imagem armazenada
     });
