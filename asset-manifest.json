@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/css/main.6a5f55de.css",
+    "main.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.efeff518.js",
+    "static/js/952.07dc2200.chunk.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/952.07dc2200.chunk.js",
+    "static/js/453.770b259e.chunk.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/453.770b259e.chunk.js",
+    "static/media/background1.jpg": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/background1.0bee29b83345f245c27b.jpg",
+    "static/media/background2.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/background2.7db69d7e4b9cc6075ad1.png",
+    "static/media/background1.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/background1.4cf5d99acbc80be1e49b.png",
+    "static/media/sustainable1.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/sustainable1.ff00c912f40c1a66da5e.png",
+    "static/media/sustainable2.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/sustainable2.7ac888f36701e94c0dda.png",
+    "static/media/background3.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/background3.3dd25c6e5bcd8f9a9970.png",
+    "static/media/sustainable3.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/sustainable3.155b19d48eb39c3c864a.png",
+    "static/media/biodiversidade.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/biodiversidade.a1a60a7068de5199a8a6.png",
+    "static/media/comunitario.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/comunitario.af1863e6ee0298c59e5d.png",
+    "static/media/transparencia.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/transparencia.404a1bbd2426a7ec6ebf.png",
+    "static/media/logo2.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/logo2.7fe2bdee804363fbdac1.png",
+    "static/media/terreno.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/terreno.4cf9f6110ed8e549da79.png",
+    "static/media/login.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/login.49c5738cd42918ef375f.png",
+    "static/media/perfil.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/perfil.bcb9cfa76cb7d11281fd.png",
+    "static/media/proposta.png": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/proposta.cf844a625eb3e0a31f10.png",
+    "static/media/trash-can-solid.svg": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/trash-can-solid.d95a7a3d419c37b1756d72f52f0b53f9.svg",
+    "index.html": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/index.html",
+    "main.6a5f55de.css.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/css/main.6a5f55de.css.map",
+    "main.efeff518.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.efeff518.js.map",
+    "952.07dc2200.chunk.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/952.07dc2200.chunk.js.map",
+    "453.770b259e.chunk.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/453.770b259e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a5f55de.css",
+    "static/js/main.efeff518.js"
+  ]
+}
