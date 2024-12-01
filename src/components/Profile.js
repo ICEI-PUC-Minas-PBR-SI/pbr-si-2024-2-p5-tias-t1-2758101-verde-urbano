@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Profile.css';
 import defaultProfileImage from '../assets/perfil.png';
 
-function Profile({ user }) {
+function Profile({ user, onLogout }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,6 +37,10 @@ function Profile({ user }) {
               <span>{user.email}</span>
             </div>
           </div>
+          {/* Botão de Logout */}
+          <button className="logout-button" onClick={onLogout}>
+            Logout
+          </button>
         </div>
       </div>
     </div>

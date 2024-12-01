@@ -201,13 +201,13 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
           )}
         </div>
         <div className="detail-item">
-          <h3>Tipo de Solo</h3>
+          <h3>Tipo de Terreno</h3>
           {isEditing ? (
             <textarea
               name="soilCondition"
               value={editableFields.soilCondition}
               onChange={handleChange}
-              placeholder="Descreva o tipo de solo"
+              placeholder="Descreva o tipo de terreno"
             />
           ) : (
             <p>{editableFields.soilCondition}</p>
