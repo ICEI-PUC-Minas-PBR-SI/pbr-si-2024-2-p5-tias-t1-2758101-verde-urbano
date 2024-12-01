@@ -124,7 +124,6 @@ function App() {
         return;
       }
 
-      sessionStorage.setItem("user_id", data[0]?.id); // Armazena o ID do usuário
       setUser({ name: username, email });
       setIsAuthenticated(true);
       setCurrentPage("profile");

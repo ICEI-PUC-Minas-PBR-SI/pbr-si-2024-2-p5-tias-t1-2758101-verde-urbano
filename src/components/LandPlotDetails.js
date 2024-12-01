@@ -47,23 +47,26 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
   };
 
   const salvaComments = async () => {
-    try {
-      const { error } = await supabase.from("comments").insert([
-        {
-          user_id: sessionStorage.user_id,
-          land_id: landPlot.landId,
-          comments: comment,
-          horario: new Date(),
-        },
-      ]);
+    if(comment!=''){
+      console.log(comment)
+      try {
+        const { error } = await supabase.from("comments").insert([
+          {
+            user_id: sessionStorage.user_id,
+            land_id: landPlot.landId,
+            comments: comment,
+            horario: new Date(),
+          },
+        ]);
 
-      if (error) {
-        throw error;
+        if (error) {
+          throw error;
+        }
+        setComment(""); // Limpa o campo de input após salvar
+        getComments();
+      } catch (error) {
+        alert("Faça login para fazer um comentário");
       }
-      setComment(""); // Limpa o campo de input após salvar
-      getComments();
-    } catch (error) {
-      alert("Faça login para fazer um comentário");
     }
   };
   const getComments = async () => {
