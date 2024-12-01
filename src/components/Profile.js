@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import './Profile.css';
-import defaultProfileImage from '../assets/perfil.png';
+import React, { useEffect } from "react";
+import "./Profile.css";
+import defaultProfileImage from "../assets/perfil.png";
 
 function Profile({ user, onLogout }) {
   useEffect(() => {

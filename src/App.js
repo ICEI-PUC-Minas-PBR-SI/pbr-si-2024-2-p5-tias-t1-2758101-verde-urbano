@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -124,12 +123,10 @@ function App() {
         });
         return;
       }
-      // Armazena o ID do usuário no sessionStorage
-      sessionStorage.setItem("user_id", user.id);
+
+      sessionStorage.setItem("user_id", data[0]?.id); // Armazena o ID do usuário
       setUser({ name: username, email });
       setIsAuthenticated(true);
-      //TODO: Redireciona o cara pra tela de login
-      //TODO: Tem que ter como acessar a tela de perfil do usuário por dentro do sistema
       setCurrentPage("profile");
       setNotification({
         message: `Usuário ${username} cadastrado com sucesso!`,
@@ -142,6 +139,20 @@ function App() {
         type: "error",
       });
     }
+  };
+
+  const handleLogout = () => {
+    // Limpa informações do usuário
+    setIsAuthenticated(false);
+    setUser({
+      name: "",
+      email: "",
+      image: "",
+    });
+    // Remove o ID do usuário do sessionStorage
+    sessionStorage.removeItem("user_id");
+    // Redireciona para a tela de login
+    setCurrentPage("auth");
   };
 
   const closeNotification = () => {
@@ -163,7 +174,9 @@ function App() {
       )}
       {currentPage === "images" && <ImageList />}
       {currentPage === "addProposal" && <AddProposal />}
-      {currentPage === "profile" && isAuthenticated && <Profile user={user} />}
+      {currentPage === "profile" && isAuthenticated && (
+        <Profile user={user} onLogout={handleLogout} />
+      )}
       {currentPage === "auth" && (
         <AuthForm onLogin={handleLogin} onRegister={handleRegister} />
       )}
