@@ -113,7 +113,8 @@ function App() {
           password: hashedPassword,
           user_type_id: userType,
         },
-      ]);
+      ])
+      .select();
 
       if (error) {
         console.error("Erro ao cadastrar o usuário:", error.message);
@@ -123,6 +124,9 @@ function App() {
         });
         return;
       }
+      if (data && data.length > 0) {
+        const userId = data[0].id; // Supõe que o campo ID se chama 'id'
+        sessionStorage.setItem('user_id', userId);
 
       setUser({ name: username, email });
       setIsAuthenticated(true);
@@ -131,6 +135,7 @@ function App() {
         message: `Usuário ${username} cadastrado com sucesso!`,
         type: "success",
       });
+    }
     } catch (error) {
       console.error("Erro inesperado ao cadastrar o usuário:", error);
       setNotification({
