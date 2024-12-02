@@ -12,8 +12,10 @@ function Navbar({ onNavigate, user, isAuthenticated }) {
     }
     return '';
   };
-
+  isAuthenticated = true;
+  
   const handleProfileClick = () => {
+    console.log(isAuthenticated)
     if (isAuthenticated) {
       onNavigate('profile'); // Acessa o perfil se estiver autenticado
     } else {
