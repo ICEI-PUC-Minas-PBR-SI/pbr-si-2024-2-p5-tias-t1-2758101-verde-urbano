@@ -47,7 +47,8 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
   };
 
   const salvaComments = async () => {
-    if(comment!=''){
+    if(comment.trim() === ''){}
+    else{
       console.log(comment)
       try {
         const { error } = await supabase.from("comments").insert([
@@ -68,6 +69,7 @@ function LandPlotDetails({ landPlot, onBack, onSave }) {
         alert("Faça login para fazer um comentário");
       }
     }
+    
   };
   const getComments = async () => {
     //Buscar os comentarios no banco
