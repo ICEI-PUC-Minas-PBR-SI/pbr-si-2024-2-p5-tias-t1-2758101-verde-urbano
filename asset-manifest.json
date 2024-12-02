@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/css/main.3c339040.css",
-    "main.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.a5e9b373.js",
+    "main.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.d7e251c8.js",
     "static/js/952.07dc2200.chunk.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/952.07dc2200.chunk.js",
     "static/js/453.770b259e.chunk.js": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/453.770b259e.chunk.js",
     "static/media/background1.jpg": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/background1.0bee29b83345f245c27b.jpg",
@@ -22,12 +22,12 @@
     "static/media/trash-can-solid.svg": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/media/trash-can-solid.d95a7a3d419c37b1756d72f52f0b53f9.svg",
     "index.html": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/index.html",
     "main.3c339040.css.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/css/main.3c339040.css.map",
-    "main.a5e9b373.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.a5e9b373.js.map",
+    "main.d7e251c8.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/main.d7e251c8.js.map",
     "952.07dc2200.chunk.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/952.07dc2200.chunk.js.map",
     "453.770b259e.chunk.js.map": "/pbr-si-2024-2-p5-tias-t1-2758101-verde-urbano/static/js/453.770b259e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3c339040.css",
-    "static/js/main.a5e9b373.js"
+    "static/js/main.d7e251c8.js"
   ]
 }
